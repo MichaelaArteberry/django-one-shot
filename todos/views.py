@@ -10,3 +10,12 @@ def ShowTodoList(request):
   }
 
   return render(request, "todos/todos.html", context)
+
+
+
+def ShowTodoItem(request, id):
+  todo_list_detail = TodoList.objects.get(id=id)
+  context = {
+    "todo_list_detail": todo_list_detail
+  }
+  return render(request, "todos/detail.html", context)
