@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Todo Lists</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>Update item</h1>
+            <form method="post">
+                {% csrf_token %}
+                <label for="task">Task:</label>
+                <input type="text" name="task">
+
+                <label for="due_date">Due Date:</label>
+                <input type="datetime-local" name="due_date">
+
+                <label for="is_completed">Is Completed:</label>
+                <input type="checkbox" name="is_completed">
+
+                <label for="list">List:</label>
+                <select name="list">
+                    <option></option>
+                    {% for list in list_of_lists %}
+                    <option value="{{ list.id }}">{{ list.name }}</option>
+                    {% endfor %}
+                </select>
+                <button>Update</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
