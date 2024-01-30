@@ -8,3 +8,12 @@ class TodoListForm(ModelForm):
         fields = (
             "name",
         )
+
+
+
+class TodoListUpdate(ModelForm):
+    class Meta:
+        model = TodoList
+        fields = (
+            "name",
+        )

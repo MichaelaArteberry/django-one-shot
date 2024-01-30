@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Todo Lists</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>Update list</h1>
+            <form method="post">
+
+                {% csrf_token %}
+                <input type="text" name="name"></input>
+                <button>Update</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
