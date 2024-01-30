@@ -14,12 +14,20 @@ def ShowTodoList(request):
 
 
 
+
+
+
 def ShowTodoItem(request, id):
   todo_list_detail = TodoList.objects.get(id=id)
   context = {
     "todo_list_detail": todo_list_detail
   }
   return render(request, "todos/detail.html", context)
+
+
+
+
+
 
 
 def create_todo_task(request):
@@ -39,6 +47,10 @@ def create_todo_task(request):
 
 
 
+
+
+
+
 def todo_list_update(request, id):
     list = get_object_or_404(TodoList, id=id)
     if request.method == "POST":
@@ -55,3 +67,15 @@ def todo_list_update(request, id):
     }
 
     return render(request, "todos/edit.html", context)
+
+
+
+
+
+def delete_todo_list(request, id):
+  model_instance = TodoList.objects.get(id=id)
+  if request.method == "POST":
+    model_instance.delete()
+    return redirect("todo_list_list")
+
+  return render(request, "todos/delete.html")
